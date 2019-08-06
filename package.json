@@ -1,0 +1,26 @@
+{
+  "name": "socket_io",
+  "version": "1.0.0",
+  "description": "node, socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hjinsu/node_socket.git"
+  },
+  "keywords": [
+    "socket"
+  ],
+  "author": "한진수",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hjinsu/node_socket/issues"
+  },
+  "homepage": "https://github.com/Hjinsu/node_socket#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  }
+}
