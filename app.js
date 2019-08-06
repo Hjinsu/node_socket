@@ -23,11 +23,14 @@ app.use('/js',express.static('./static/js'));
     get(경로, 함수)는 서버의 / 경로를 Get 방식으로 접속하면 호출이 된다.
     함수는 request와 response 객체를 받는다.
 */
+let id ;
 app.get("/",(request, response) => {
     fs.readFile('./static/js/index.html',(err,data) => {
         if(err)
             response.send('error');
         else{
+            id = request.query.id;
+            console.log(id);
             response.writeHead(200,{'Content-Type':'text/html'});
             response.write(data);
             //response.write를 통해 응답할 경우 end로 마무리를 해야하낟.
@@ -38,11 +41,11 @@ app.get("/",(request, response) => {
 
 io.sockets.on('connection', socket =>{
     socket.on('newUser',function(name){
-        socket.name = name;
+        socket.name = id;
         socket.emit('update',{
             type: 'connect',
             name : 'SERVER',
-            message : name + '님이 접속 하였습니다.'
+            message : socket.name + '님이 접속 하였습니다.'
         });
     });
     socket.on('message', function(data){
