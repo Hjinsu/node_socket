@@ -9,12 +9,12 @@
   </head>
   <body>
     <div id="main">
-      <div id="chat">
+      <div id="chat" oninput="">
         <!-- 채팅 메시지 영역 -->
       </div>
       <div>
-        <input type="text" id="test" placeholder="메시지를 입력해주세요..">
-        <button onclick="send()">전송</button>
+        <input type="text" id="test" placeholder="메시지를 입력해주세요.." onkeyup="enterkey()">
+        <button onclick="send()" >전송</button>
       </div>
     </div>
   </body>

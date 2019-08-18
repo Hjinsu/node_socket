@@ -4,12 +4,12 @@ var socket = io()
 socket.on('connect', function() {
   /* 서버에 새로운 유저가 왔다고 알림 */
   socket.emit('newUser');
+  
+  document.getElementById('test').focus();
 })
-
 /* 서버로부터 데이터 받은 경우 */
 socket.on('update', function(data) {
   var chat = document.getElementById('chat')
-
   var message = document.createElement('div')
   var node = document.createTextNode(`${data.name}: ${data.message}`)
   var className = ''
@@ -34,6 +34,11 @@ socket.on('update', function(data) {
   chat.appendChild(message)
 })
 
+function enterkey(){
+  if(window.event.keyCode == 13){
+    send();
+  }
+}
 /* 메시지 전송 함수 */
 function send() {
   // 입력되어있는 데이터 가져오기
@@ -41,6 +46,7 @@ function send() {
   
   // 가져왔으니 데이터 빈칸으로 변경
   document.getElementById('test').value = ''
+  document.getElementById('test').focus();
 
   // 내가 전송할 메시지 클라이언트에게 표시
   var chat = document.getElementById('chat')
